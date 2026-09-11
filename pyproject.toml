@@ -1,0 +1,19 @@
+[project]
+name = "dp-debugger"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "dagster>=1.13.21",
+    "dagster-postgres>=0.29.21",
+    "dagster-webserver>=1.13.21",
+    "faker>=40.38.0",
+    "fastapi>=0.141.1",
+    "psycopg2-binary>=2.9.13",
+    "pydantic-settings>=2.15.0",
+    "python-dotenv>=1.2.3",
+    "sqlalchemy>=2.0.52",
+    "streamlit>=1.63.0",
+    "uvicorn>=0.52.4",
+]

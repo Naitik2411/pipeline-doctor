@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: pipelinedoctor-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-pipelinedoctor}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pipelinedoctor}
+      POSTGRES_DB: ${POSTGRES_DB:-pipelinedoctor}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-pipelinedoctor} -d ${POSTGRES_DB:-pipelinedoctor}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  pgdata:
