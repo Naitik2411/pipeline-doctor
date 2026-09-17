@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     )
 
     seed_days: int = 56  # ~8 weeks
-    orders_per_day: int = 2000  # start small locally
+    orders_per_day: int = 2000  
     faker_seed: int = 42
     business_timezone: str = "America/New_York"
 

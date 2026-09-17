@@ -1,0 +1,11 @@
+.venv
+.git
+__pycache__
+*.pyc
+.dagster
+.tmp_dagster_home*
+.env
+*.md
+.pytest_cache
+.mypy_cache
+.ruff_cache

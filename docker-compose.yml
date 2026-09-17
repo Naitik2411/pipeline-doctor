@@ -16,5 +16,24 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+  mock-api:
+    build: .
+    container_name: pipelinedoctor-mock-api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-pipelinedoctor}:${POSTGRES_PASSWORD:-pipelinedoctor}@postgres:5432/${POSTGRES_DB:-pipelinedoctor}
+    depends_on:
+      postgres:
+        condition: service_healthy
+  # dagster:
+  #   build: .
+  #   command: ["uv", "run", "dagster", "dev", "-h", "0.0.0.0", "-p", "3000", "-m", "services.pipeline.definitions"]
+  #   ports: ["3000:3000"]
+  #   environment:
+  #     DATABASE_URL: postgresql://...@postgres:5432/...
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
 volumes:
   pgdata:
