@@ -5,6 +5,7 @@ build/
 dist/
 wheels/
 *.egg-info
+.fault_state.json
 
 # Virtual environments
 .venv
